@@ -10,26 +10,20 @@ using MySql.Data.MySqlClient;
 
 namespace Treasurer_App
 {
-    class My_Database
+    class my_Database
     {
         //the connection
-        MySqlConnection connection = new MySqlConnection("datasource-=localhost;port=3306;username=root;password=mysql1CODE;database=usersdb");
 
-        //return connection
-        public MySqlConnection getConnection
-        {
-            get
-            {
-                return connection;
-            }
-        }
+        private MySqlConnection connection = new MySqlConnection("server=localhost;port=3306;username=root;password=mysql1CODE;database=usersdb");
+
+        public MySqlConnection Connection { get => connection; set => connection = value; }
 
         //open connection
         public void openConnection()
         {
-            if(con.State=ConnectionState.Closed)
+            if(Connection.State == ConnectionState.Closed)
             {
-                connection.Open();
+                Connection.Open();
             }
         }
 
@@ -37,12 +31,18 @@ namespace Treasurer_App
 
         public void closeConnection()
         {
-            if (con.State = ConnectionState.Open)
+            if (Connection.State == ConnectionState.Open)
             {
-                con.Close;
+                Connection.Close();
             }
         }
 
+
+        //return connection
+        public MySqlConnection getConnection()
+        {
+            return Connection;
+        }
 
     }
 }

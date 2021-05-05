@@ -41,7 +41,7 @@ namespace Treasurer_App
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.panel1.BackColor = System.Drawing.Color.LightSeaGreen;
             this.panel1.Controls.Add(this.button_Login);
             this.panel1.Controls.Add(this.textBoxPassword);
             this.panel1.Controls.Add(this.textBoxUsername);
@@ -58,7 +58,7 @@ namespace Treasurer_App
             // 
             this.button_Login.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Login.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.button_Login.Location = new System.Drawing.Point(338, 301);
+            this.button_Login.Location = new System.Drawing.Point(336, 294);
             this.button_Login.Name = "button_Login";
             this.button_Login.Size = new System.Drawing.Size(93, 35);
             this.button_Login.TabIndex = 5;
@@ -110,7 +110,7 @@ namespace Treasurer_App
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(309, 101);
+            this.label1.Location = new System.Drawing.Point(298, 125);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 29);
             this.label1.TabIndex = 0;

@@ -16,7 +16,18 @@ namespace Treasurer_App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login_Form());
+
+            //Application.Run(new Login_Form());
+            Login_Form flogin = new Login_Form();
+
+            if (flogin.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new Main_Form());
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
     }
 }
