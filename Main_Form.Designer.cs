@@ -31,6 +31,10 @@ namespace Treasurer_App
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelSearchResult = new System.Windows.Forms.Label();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -44,6 +48,10 @@ namespace Treasurer_App
             // 
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.panel1.Controls.Add(this.labelSearchResult);
+            this.panel1.Controls.Add(this.buttonSearch);
+            this.panel1.Controls.Add(this.textBoxSearch);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.buttonRefresh);
             this.panel1.Controls.Add(this.dataGridView1);
@@ -55,19 +63,65 @@ namespace Treasurer_App
             this.panel1.Size = new System.Drawing.Size(784, 461);
             this.panel1.TabIndex = 0;
             // 
+            // labelSearchResult
+            // 
+            this.labelSearchResult.BackColor = System.Drawing.Color.Teal;
+            this.labelSearchResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelSearchResult.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSearchResult.ForeColor = System.Drawing.Color.White;
+            this.labelSearchResult.Location = new System.Drawing.Point(527, 21);
+            this.labelSearchResult.Name = "labelSearchResult";
+            this.labelSearchResult.Size = new System.Drawing.Size(204, 19);
+            this.labelSearchResult.TabIndex = 11;
+            this.labelSearchResult.Text = "Нийт илэрц : ";
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonSearch.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonSearch.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSearch.ForeColor = System.Drawing.Color.Black;
+            this.buttonSearch.Location = new System.Drawing.Point(401, 12);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonSearch.Size = new System.Drawing.Size(82, 34);
+            this.buttonSearch.TabIndex = 10;
+            this.buttonSearch.Text = "Хайх";
+            this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonSearch_MouseClick);
+            // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Location = new System.Drawing.Point(192, 21);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(203, 19);
+            this.textBoxSearch.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(15, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(171, 16);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Хайх утга аа оруулна уу:";
+            // 
             // button1
             // 
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button1.BackColor = System.Drawing.Color.Teal;
             this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(419, 292);
+            this.button1.Location = new System.Drawing.Point(419, 343);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(3);
             this.button1.Size = new System.Drawing.Size(330, 44);
             this.button1.TabIndex = 7;
             this.button1.Text = "Хүний мэдээлэл";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
             // 
             // buttonRefresh
             // 
@@ -75,7 +129,7 @@ namespace Treasurer_App
             this.buttonRefresh.BackColor = System.Drawing.Color.Teal;
             this.buttonRefresh.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonRefresh.ForeColor = System.Drawing.Color.Black;
-            this.buttonRefresh.Location = new System.Drawing.Point(35, 292);
+            this.buttonRefresh.Location = new System.Drawing.Point(35, 343);
             this.buttonRefresh.Name = "buttonRefresh";
             this.buttonRefresh.Size = new System.Drawing.Size(330, 44);
             this.buttonRefresh.TabIndex = 5;
@@ -90,7 +144,7 @@ namespace Treasurer_App
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 61);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 21;
             this.dataGridView1.Size = new System.Drawing.Size(760, 262);
@@ -134,6 +188,7 @@ namespace Treasurer_App
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Эд хөрөнгийн бүртгэл";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -148,5 +203,9 @@ namespace Treasurer_App
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonRefresh;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelSearchResult;
     }
 }

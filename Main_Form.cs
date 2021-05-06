@@ -39,6 +39,7 @@ namespace Treasurer_App
             DataGridViewImageColumn imgCol = new DataGridViewImageColumn();
 
             dataGridView1.RowTemplate.Height = 60;
+            dataGridView1.RowHeadersVisible = false;
 
             dataGridView1.DataSource = product.getProducts(command);
 
@@ -47,6 +48,8 @@ namespace Treasurer_App
             imgCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
 
             dataGridView1.AllowUserToAddRows = false;
+
+            labelSearchResult.Text = "Нийт илэрц: " + dataGridView1.Rows.Count;
 
         }
 
@@ -96,6 +99,40 @@ namespace Treasurer_App
             MemoryStream image = new MemoryStream(img);
             updateAndDelete.pictureBoxThing.Image = Image.FromStream(image);
             updateAndDelete.Show();
+        }
+
+        private void buttonSearch_MouseClick(object sender, MouseEventArgs e)
+        {
+            //oruulsn ugeer haih function
+
+            string query = "SELECT * FROM `usersdb`.`product`WHERE CONCAT(`product_id`,`pname`,`ptype`,`person_responsible_for`) LIKE '%" + textBoxSearch.Text + "%';";
+            MySqlCommand command = new MySqlCommand(query);
+            fillDataGrid(command);
+        }
+
+        public void fillDataGrid(MySqlCommand command)
+        {
+            dataGridView1.ReadOnly = true;
+
+            DataGridViewImageColumn imgCol = new DataGridViewImageColumn();
+
+            dataGridView1.RowTemplate.Height = 60;
+            dataGridView1.RowHeadersVisible = false;
+
+            dataGridView1.DataSource = product.getProducts(command);
+
+            imgCol = (DataGridViewImageColumn)dataGridView1.Columns[6];
+
+            imgCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
+
+            dataGridView1.AllowUserToAddRows = false;
+        }
+
+        private void button1_MouseClick(object sender, MouseEventArgs e)
+        {
+            // hvniii medeeleltei database table iig gargah form
+            PeopleImformationForm peopleImformation = new PeopleImformationForm();
+            peopleImformation.Show(this);
         }
     }
 }
