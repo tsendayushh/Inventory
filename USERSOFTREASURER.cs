@@ -44,6 +44,7 @@ namespace Treasurer_App
             MySqlCommand command = new MySqlCommand("UPDATE `usersdb`.`users_of_treasurer` SET `firstname` = @fn,`lastname` = @ln, `email` = @em, `username` = @usn,`picture`= @img WHERE `users_of_treasurer`.`user_id` = @ID; ", db.getConnection());
 
             //@fn, @ln, @em, @usn, @img
+            command.Parameters.Add("@ID", MySqlDbType.Int32).Value = ID;
             command.Parameters.Add("@fn", MySqlDbType.VarChar).Value = fname;
             command.Parameters.Add("@ln", MySqlDbType.VarChar).Value = lname;
             command.Parameters.Add("@em", MySqlDbType.VarChar).Value = email;

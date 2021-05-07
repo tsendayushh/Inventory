@@ -51,6 +51,8 @@ namespace Treasurer_App
 
             labelSearchResult.Text = "Нийт илэрц: " + dataGridView1.Rows.Count;
 
+            textBoxSearch.Text = "";
+
         }
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
@@ -108,6 +110,8 @@ namespace Treasurer_App
             string query = "SELECT * FROM `usersdb`.`product`WHERE CONCAT(`product_id`,`pname`,`ptype`,`person_responsible_for`) LIKE '%" + textBoxSearch.Text + "%';";
             MySqlCommand command = new MySqlCommand(query);
             fillDataGrid(command);
+
+            labelSearchResult.Text = "Нийт илэрц: " + dataGridView1.Rows.Count;
         }
 
         public void fillDataGrid(MySqlCommand command)
@@ -126,6 +130,13 @@ namespace Treasurer_App
             imgCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
 
             dataGridView1.AllowUserToAddRows = false;
+            /*
+             * product iin expire bolsn ued ulaan aar haruulah
+            int yearNow = DateTime.Now.Year;
+            int yearExpireProduct = dataGridView1.
+            
+            dataGridView1.DefaultCellStyle.BackColor
+            */
         }
 
         private void button1_MouseClick(object sender, MouseEventArgs e)
@@ -133,6 +144,16 @@ namespace Treasurer_App
             // hvniii medeeleltei database table iig gargah form
             PeopleImformationForm peopleImformation = new PeopleImformationForm();
             peopleImformation.Show(this);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // application oos garah
+            if(MessageBox.Show("Та аппликейшнээс гарахдаа итгэлтэй байна уу?", "Гарах", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                MessageBox.Show("Дараа дахин уулзатлаа түр баяртай", "Баяртай", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Application.Exit();
+            }
         }
     }
 }

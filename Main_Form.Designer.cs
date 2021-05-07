@@ -40,6 +40,7 @@ namespace Treasurer_App
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonEditThing = new System.Windows.Forms.Button();
             this.buttonAddThing = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -48,6 +49,7 @@ namespace Treasurer_App
             // 
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.labelSearchResult);
             this.panel1.Controls.Add(this.buttonSearch);
             this.panel1.Controls.Add(this.textBoxSearch);
@@ -153,10 +155,10 @@ namespace Treasurer_App
             // 
             // buttonEditThing
             // 
-            this.buttonEditThing.BackColor = System.Drawing.Color.Teal;
+            this.buttonEditThing.BackColor = System.Drawing.Color.RoyalBlue;
             this.buttonEditThing.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEditThing.ForeColor = System.Drawing.Color.Black;
-            this.buttonEditThing.Location = new System.Drawing.Point(222, 406);
+            this.buttonEditThing.Location = new System.Drawing.Point(222, 402);
             this.buttonEditThing.Name = "buttonEditThing";
             this.buttonEditThing.Size = new System.Drawing.Size(143, 43);
             this.buttonEditThing.TabIndex = 3;
@@ -166,16 +168,31 @@ namespace Treasurer_App
             // 
             // buttonAddThing
             // 
-            this.buttonAddThing.BackColor = System.Drawing.Color.Teal;
+            this.buttonAddThing.BackColor = System.Drawing.Color.DarkTurquoise;
             this.buttonAddThing.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddThing.ForeColor = System.Drawing.Color.Black;
-            this.buttonAddThing.Location = new System.Drawing.Point(55, 406);
+            this.buttonAddThing.Location = new System.Drawing.Point(35, 402);
             this.buttonAddThing.Name = "buttonAddThing";
             this.buttonAddThing.Size = new System.Drawing.Size(143, 43);
             this.buttonAddThing.TabIndex = 2;
             this.buttonAddThing.Text = "Эд хөрөнгө бүртгэх";
             this.buttonAddThing.UseVisualStyleBackColor = false;
             this.buttonAddThing.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonAddThing_MouseClick);
+            // 
+            // button2
+            // 
+            this.button2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button2.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(419, 402);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(3);
+            this.button2.Size = new System.Drawing.Size(330, 44);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Гарах";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Main_Form
             // 
@@ -207,5 +224,6 @@ namespace Treasurer_App
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelSearchResult;
+        private System.Windows.Forms.Button button2;
     }
 }

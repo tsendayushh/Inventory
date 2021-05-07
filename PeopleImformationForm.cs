@@ -41,7 +41,9 @@ namespace Treasurer_App
 
             dataGridView1.AllowUserToAddRows = false;
 
+
             labelSearchResult.Text = "Нийт илэрц: " + dataGridView1.Rows.Count;
+
 
 
         }
@@ -52,7 +54,7 @@ namespace Treasurer_App
                 (textBoxLastname.Text.Trim() == "") ||
                 (textBoxEmailaAddress.Text.Trim() == "") ||
                 (textBoxUsername.Text.Trim() == "") ||
-                (labelll.Image == null))
+                (picOfPerson.Image == null))
             {
                 return false;
             }
@@ -164,7 +166,7 @@ namespace Treasurer_App
 
             if (opf.ShowDialog() == DialogResult.OK)
             {
-                labelll.Image = Image.FromFile(opf.FileName);
+                picOfPerson.Image = Image.FromFile(opf.FileName);
             }
 
         }
@@ -194,12 +196,19 @@ namespace Treasurer_App
             string query = "SELECT * FROM `usersdb`.`users_of_treasurer`WHERE CONCAT(`firstname`,`lastname`,`email`,`username`) LIKE '%" + textBoxSearch.Text + "%';";
             MySqlCommand command = new MySqlCommand(query);
             fillDataGrid(command);
+
+            labelSearchResult.Text = "Нийт илэрц: " + dataGridView1.Rows.Count;
         }
 
-        private void buttonFind_MouseClick(object sender, MouseEventArgs e)
+
+        private void textBoxFindID_TextChanged(object sender, EventArgs e)
         {
             // id gaar ni person haih uildel
-            int id = Convert.ToInt32(textBoxFindID.Text);
+
+            int id;
+            if (textBoxFindID.Text == "") id = 0;
+            else
+                id = Convert.ToInt32( textBoxFindID.Text.ToString());
             MySqlCommand command = new MySqlCommand("SELECT `firstname`,`lastname`,`email`,`username`,'picture' FROM `usersdb`.`users_of_treasurer` WHERE user_id = " + id);
 
             DataTable table = usersoftreasurer.getPerson(command);
@@ -211,11 +220,45 @@ namespace Treasurer_App
                 textBoxEmailaAddress.Text = table.Rows[0]["email"].ToString();
                 textBoxUsername.Text = table.Rows[0]["username"].ToString();
 
-                byte[] img = (byte[])table.Rows[0]["picture"];
+                /*
+                try
+                {
+                    string s = (string)table.Rows[0]["picture"];
+                    byte[] img;
+                    img = System.Text.Encoding.ASCII.GetBytes(s);
+                    MemoryStream image = new MemoryStream(img);
+                    picOfPerson.Image = Image.FromStream(image);
+
+                }
+                catch(Exception ex)
+                {
+                    throw ex;
+                }
+                */
+
+
+                /*
+                byte[] img;
+                img = (byte[])table.Rows[0]["picture"];
                 MemoryStream image = new MemoryStream(img);
                 picOfPerson.Image = Image.FromStream(image);
-
+                */
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxFindID.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            textBoxFirstame.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            textBoxLastname.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            textBoxEmailaAddress.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            textBoxUsername.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+
+            byte[] img;
+            img = (byte[])dataGridView1.CurrentRow.Cells[6].Value;
+            MemoryStream image = new MemoryStream(img);
+            picOfPerson.Image = Image.FromStream(image);
+
         }
     }
 }

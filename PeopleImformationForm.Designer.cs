@@ -49,8 +49,8 @@ namespace Treasurer_App
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.buttonFind = new System.Windows.Forms.Button();
             this.textBoxFindID = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picOfPerson)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -233,6 +233,7 @@ namespace Treasurer_App
             this.dataGridView1.RowTemplate.Height = 21;
             this.dataGridView1.Size = new System.Drawing.Size(475, 326);
             this.dataGridView1.TabIndex = 39;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // buttonUpdatePerson
             // 
@@ -282,28 +283,26 @@ namespace Treasurer_App
             this.label2.TabIndex = 42;
             this.label2.Text = "Хэрэглэгчийн нэр:";
             // 
-            // buttonFind
-            // 
-            this.buttonFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.buttonFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFind.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFind.ForeColor = System.Drawing.Color.White;
-            this.buttonFind.Location = new System.Drawing.Point(509, 17);
-            this.buttonFind.Name = "buttonFind";
-            this.buttonFind.Size = new System.Drawing.Size(203, 25);
-            this.buttonFind.TabIndex = 46;
-            this.buttonFind.Text = "Бүртгэлийн дугаараар хайх";
-            this.buttonFind.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonFind.UseVisualStyleBackColor = false;
-            this.buttonFind.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonFind_MouseClick);
-            // 
             // textBoxFindID
             // 
             this.textBoxFindID.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxFindID.Location = new System.Drawing.Point(734, 18);
+            this.textBoxFindID.Location = new System.Drawing.Point(665, 21);
             this.textBoxFindID.Name = "textBoxFindID";
             this.textBoxFindID.Size = new System.Drawing.Size(58, 22);
             this.textBoxFindID.TabIndex = 45;
+            this.textBoxFindID.TextChanged += new System.EventHandler(this.textBoxFindID_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Teal;
+            this.label3.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Location = new System.Drawing.Point(506, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(141, 16);
+            this.label3.TabIndex = 46;
+            this.label3.Text = "Бүртгэлийн дугаар:";
             // 
             // PeopleImformationForm
             // 
@@ -311,7 +310,7 @@ namespace Treasurer_App
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(806, 492);
-            this.Controls.Add(this.buttonFind);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxFindID);
             this.Controls.Add(this.textBoxUsername);
             this.Controls.Add(this.label2);
@@ -365,7 +364,7 @@ namespace Treasurer_App
         private System.Windows.Forms.Button buttonRefresh;
         private System.Windows.Forms.TextBox textBoxUsername;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button buttonFind;
         internal System.Windows.Forms.TextBox textBoxFindID;
+        private System.Windows.Forms.Label label3;
     }
 }
