@@ -30,6 +30,8 @@ namespace Treasurer_App
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBoxPerson = new System.Windows.Forms.ComboBox();
+            this.comboBoxProductType = new System.Windows.Forms.ComboBox();
             this.buttonFind = new System.Windows.Forms.Button();
             this.buttonDeleteProduct = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
@@ -38,8 +40,6 @@ namespace Treasurer_App
             this.imageOfProduct = new System.Windows.Forms.Label();
             this.textBoxFindID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxPeopleResp = new System.Windows.Forms.TextBox();
-            this.textBoxThingType = new System.Windows.Forms.TextBox();
             this.dateExpire = new System.Windows.Forms.DateTimePicker();
             this.dateManufactured = new System.Windows.Forms.DateTimePicker();
             this.personResponsibleFor = new System.Windows.Forms.Label();
@@ -55,6 +55,8 @@ namespace Treasurer_App
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Teal;
+            this.panel1.Controls.Add(this.comboBoxPerson);
+            this.panel1.Controls.Add(this.comboBoxProductType);
             this.panel1.Controls.Add(this.buttonFind);
             this.panel1.Controls.Add(this.buttonDeleteProduct);
             this.panel1.Controls.Add(this.buttonUpdate);
@@ -63,8 +65,6 @@ namespace Treasurer_App
             this.panel1.Controls.Add(this.imageOfProduct);
             this.panel1.Controls.Add(this.textBoxFindID);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBoxPeopleResp);
-            this.panel1.Controls.Add(this.textBoxThingType);
             this.panel1.Controls.Add(this.dateExpire);
             this.panel1.Controls.Add(this.dateManufactured);
             this.panel1.Controls.Add(this.personResponsibleFor);
@@ -78,6 +78,24 @@ namespace Treasurer_App
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(672, 450);
             this.panel1.TabIndex = 0;
+            // 
+            // comboBoxPerson
+            // 
+            this.comboBoxPerson.FormattingEnabled = true;
+            this.comboBoxPerson.Location = new System.Drawing.Point(91, 357);
+            this.comboBoxPerson.Name = "comboBoxPerson";
+            this.comboBoxPerson.Size = new System.Drawing.Size(220, 20);
+            this.comboBoxPerson.TabIndex = 43;
+            this.comboBoxPerson.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comboBoxPerson_MouseClick);
+            // 
+            // comboBoxProductType
+            // 
+            this.comboBoxProductType.FormattingEnabled = true;
+            this.comboBoxProductType.Location = new System.Drawing.Point(91, 155);
+            this.comboBoxProductType.Name = "comboBoxProductType";
+            this.comboBoxProductType.Size = new System.Drawing.Size(220, 20);
+            this.comboBoxProductType.TabIndex = 42;
+            this.comboBoxProductType.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comboBoxProductType_MouseClick);
             // 
             // buttonFind
             // 
@@ -174,22 +192,6 @@ namespace Treasurer_App
             this.label1.Size = new System.Drawing.Size(143, 16);
             this.label1.TabIndex = 34;
             this.label1.Text = "Бүртгэлийн Дугаар:";
-            // 
-            // textBoxPeopleResp
-            // 
-            this.textBoxPeopleResp.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPeopleResp.Location = new System.Drawing.Point(90, 354);
-            this.textBoxPeopleResp.Name = "textBoxPeopleResp";
-            this.textBoxPeopleResp.Size = new System.Drawing.Size(220, 22);
-            this.textBoxPeopleResp.TabIndex = 33;
-            // 
-            // textBoxThingType
-            // 
-            this.textBoxThingType.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxThingType.Location = new System.Drawing.Point(91, 161);
-            this.textBoxThingType.Name = "textBoxThingType";
-            this.textBoxThingType.Size = new System.Drawing.Size(220, 22);
-            this.textBoxThingType.TabIndex = 32;
             // 
             // dateExpire
             // 
@@ -304,11 +306,11 @@ namespace Treasurer_App
         private System.Windows.Forms.Button buttonOfAddThingsPhoto;
         private System.Windows.Forms.Label imageOfProduct;
         internal System.Windows.Forms.TextBox textBoxFindID;
-        internal System.Windows.Forms.TextBox textBoxThingType;
         internal System.Windows.Forms.TextBox textBoxProductName;
-        internal System.Windows.Forms.TextBox textBoxPeopleResp;
         internal System.Windows.Forms.DateTimePicker dateExpire;
         internal System.Windows.Forms.DateTimePicker dateManufactured;
         internal System.Windows.Forms.PictureBox pictureBoxThing;
+        internal System.Windows.Forms.ComboBox comboBoxProductType;
+        internal System.Windows.Forms.ComboBox comboBoxPerson;
     }
 }

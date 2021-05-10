@@ -75,6 +75,12 @@
     <Compile Include="PRODUCT.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuickPersonalInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuickPersonalInfoForm.Designer.cs">
+      <DependentUpon>QuickPersonalInfoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateAndDeleteProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="QuickPersonalInfoForm.resx">
+      <DependentUpon>QuickPersonalInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UpdateAndDeleteProductForm.resx">
       <DependentUpon>UpdateAndDeleteProductForm.cs</DependentUpon>
     </EmbeddedResource>

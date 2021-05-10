@@ -42,12 +42,15 @@ namespace Treasurer_App
             if(table.Rows.Count > 0)
             {
                 textBoxProductName.Text = table.Rows[0]["pname"].ToString();
-                textBoxThingType.Text = table.Rows[0]["ptype"].ToString();
+                //textBoxThingType.Text = table.Rows[0]["ptype"].ToString();
+                comboBoxProductType.Text = table.Rows[0]["ptype"].ToString();
+                
 
                 dateManufactured.Value = (DateTime)table.Rows[0]["date_manufactured"];
                 dateExpire.Value = (DateTime)table.Rows[0]["date_expire"];
 
-                textBoxPeopleResp.Text = table.Rows[0]["person_responsible_for"].ToString();
+                //textBoxPeopleResp.Text = table.Rows[0]["person_responsible_for"].ToString();
+                comboBoxPerson.Text = table.Rows[0]["person_responsible_for"].ToString();
 
                 byte[] img = (byte[])table.Rows[0]["image"];
                 MemoryStream image = new MemoryStream(img);
@@ -60,8 +63,8 @@ namespace Treasurer_App
         bool verif()
         {
             if ((textBoxProductName.Text.Trim() == "") ||
-                (textBoxThingType.Text.Trim() == "") ||
-                (textBoxPeopleResp.Text.Trim() == "") ||
+                (comboBoxProductType.Text.Trim() == "") ||
+                (comboBoxPerson.Text.Trim() == "") ||
                 (pictureBoxThing.Image == null))
             {
                 return false;
@@ -79,10 +82,12 @@ namespace Treasurer_App
 
             int id = Convert.ToInt32(textBoxFindID.Text);
             string pName = textBoxProductName.Text;
-            string pType = textBoxThingType.Text;
+            //string pType = textBoxThingType.Text;
+            string pType = comboBoxProductType.Text;
             DateTime mDate = dateManufactured.Value;
             DateTime eDate = dateExpire.Value;
-            string owner = textBoxPeopleResp.Text;
+            //string owner = textBoxPeopleResp.Text;
+            string owner = comboBoxPerson.Text;
 
             MemoryStream image = new MemoryStream();
 
@@ -121,10 +126,10 @@ namespace Treasurer_App
                 product.deleteProduct(id);
 
                 textBoxFindID.Text = "";
-                textBoxThingType.Text = "";
+                comboBoxProductType.Text = "";
                 dateManufactured.Value = DateTime.Now;
                 dateExpire.Value = DateTime.Now;
-                textBoxPeopleResp.Text = "";
+                comboBoxPerson.Text = "";
                 pictureBoxThing.Image = null;
 
                 MessageBox.Show("Эд хогшил бүртгэлээс устгагдлаа.", "Эд хогшил устгах", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -134,6 +139,45 @@ namespace Treasurer_App
                 MessageBox.Show("Эд хогшил бүртгэлээс устсангүй.", "Эд хогшил устгах", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+        }
+
+    
+        private void comboBoxPerson_MouseClick(object sender, MouseEventArgs e)
+        {
+            comboBoxPerson.Items.Clear();
+            my_Database db = new my_Database();
+            db.openConnection();
+            USERSOFTREASURER usersoftreasurer = new USERSOFTREASURER();
+
+            string query = "SELECT * FROM `usersdb`.`users_of_treasurer`;";
+
+            MySqlCommand command = new MySqlCommand(query, db.getConnection());
+            //DataTable table = usersoftreasurer.getPerson(command);
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                //comboBoxPerson.Items.Add(table.Columns.)
+                comboBoxPerson.Items.Add(reader.GetString("username"));
+            }
+        }
+
+        private void comboBoxProductType_MouseClick(object sender, MouseEventArgs e)
+        {
+            comboBoxProductType.Items.Clear();
+            my_Database db = new my_Database();
+            db.openConnection();
+
+            string query = "SELECT * FROM `usersdb`.`type_of_product`;";
+
+            MySqlCommand command = new MySqlCommand(query, db.getConnection());
+            MySqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                comboBoxProductType.Items.Add(reader.GetString("product_type"));
+            }
         }
     }
 }

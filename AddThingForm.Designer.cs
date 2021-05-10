@@ -40,11 +40,11 @@ namespace Treasurer_App
             this.dateManufactured = new System.Windows.Forms.DateTimePicker();
             this.dateExpire = new System.Windows.Forms.DateTimePicker();
             this.buttonOfAddThingsPhoto = new System.Windows.Forms.Button();
-            this.textBoxThingType = new System.Windows.Forms.TextBox();
             this.pictureBoxThing = new System.Windows.Forms.PictureBox();
             this.buttonAddThing = new System.Windows.Forms.Button();
             this.buttonCancelAdd = new System.Windows.Forms.Button();
-            this.textBoxPeopleResp = new System.Windows.Forms.TextBox();
+            this.comboBoxPerson = new System.Windows.Forms.ComboBox();
+            this.comboBoxProductType = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThing)).BeginInit();
             this.SuspendLayout();
             // 
@@ -122,7 +122,7 @@ namespace Treasurer_App
             this.imageOfProduct.BackColor = System.Drawing.Color.Teal;
             this.imageOfProduct.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.imageOfProduct.ForeColor = System.Drawing.SystemColors.Control;
-            this.imageOfProduct.Location = new System.Drawing.Point(12, 355);
+            this.imageOfProduct.Location = new System.Drawing.Point(13, 364);
             this.imageOfProduct.Name = "imageOfProduct";
             this.imageOfProduct.Size = new System.Drawing.Size(52, 16);
             this.imageOfProduct.TabIndex = 15;
@@ -144,7 +144,7 @@ namespace Treasurer_App
             // 
             // buttonOfAddThingsPhoto
             // 
-            this.buttonOfAddThingsPhoto.Location = new System.Drawing.Point(278, 328);
+            this.buttonOfAddThingsPhoto.Location = new System.Drawing.Point(279, 337);
             this.buttonOfAddThingsPhoto.Name = "buttonOfAddThingsPhoto";
             this.buttonOfAddThingsPhoto.Size = new System.Drawing.Size(21, 91);
             this.buttonOfAddThingsPhoto.TabIndex = 18;
@@ -152,19 +152,11 @@ namespace Treasurer_App
             this.buttonOfAddThingsPhoto.UseVisualStyleBackColor = true;
             this.buttonOfAddThingsPhoto.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonOfAddThingsPhoto_MouseClick);
             // 
-            // textBoxThingType
-            // 
-            this.textBoxThingType.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxThingType.Location = new System.Drawing.Point(80, 104);
-            this.textBoxThingType.Name = "textBoxThingType";
-            this.textBoxThingType.Size = new System.Drawing.Size(220, 22);
-            this.textBoxThingType.TabIndex = 19;
-            // 
             // pictureBoxThing
             // 
             this.pictureBoxThing.BackColor = System.Drawing.Color.LightSeaGreen;
             this.pictureBoxThing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxThing.Location = new System.Drawing.Point(120, 328);
+            this.pictureBoxThing.Location = new System.Drawing.Point(121, 337);
             this.pictureBoxThing.Name = "pictureBoxThing";
             this.pictureBoxThing.Size = new System.Drawing.Size(140, 91);
             this.pictureBoxThing.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -177,7 +169,7 @@ namespace Treasurer_App
             this.buttonAddThing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddThing.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddThing.ForeColor = System.Drawing.Color.White;
-            this.buttonAddThing.Location = new System.Drawing.Point(48, 445);
+            this.buttonAddThing.Location = new System.Drawing.Point(49, 454);
             this.buttonAddThing.Name = "buttonAddThing";
             this.buttonAddThing.Size = new System.Drawing.Size(93, 38);
             this.buttonAddThing.TabIndex = 21;
@@ -187,11 +179,11 @@ namespace Treasurer_App
             // 
             // buttonCancelAdd
             // 
-            this.buttonCancelAdd.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.buttonCancelAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonCancelAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCancelAdd.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelAdd.ForeColor = System.Drawing.Color.White;
-            this.buttonCancelAdd.Location = new System.Drawing.Point(180, 445);
+            this.buttonCancelAdd.Location = new System.Drawing.Point(181, 454);
             this.buttonCancelAdd.Name = "buttonCancelAdd";
             this.buttonCancelAdd.Size = new System.Drawing.Size(93, 38);
             this.buttonCancelAdd.TabIndex = 22;
@@ -199,25 +191,35 @@ namespace Treasurer_App
             this.buttonCancelAdd.UseVisualStyleBackColor = false;
             this.buttonCancelAdd.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonCancelAdd_MouseClick);
             // 
-            // textBoxPeopleResp
+            // comboBoxPerson
             // 
-            this.textBoxPeopleResp.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPeopleResp.Location = new System.Drawing.Point(79, 297);
-            this.textBoxPeopleResp.Name = "textBoxPeopleResp";
-            this.textBoxPeopleResp.Size = new System.Drawing.Size(220, 22);
-            this.textBoxPeopleResp.TabIndex = 23;
+            this.comboBoxPerson.FormattingEnabled = true;
+            this.comboBoxPerson.Location = new System.Drawing.Point(80, 301);
+            this.comboBoxPerson.Name = "comboBoxPerson";
+            this.comboBoxPerson.Size = new System.Drawing.Size(220, 20);
+            this.comboBoxPerson.TabIndex = 24;
+            this.comboBoxPerson.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comboBoxPerson_MouseClick);
+            // 
+            // comboBoxProductType
+            // 
+            this.comboBoxProductType.FormattingEnabled = true;
+            this.comboBoxProductType.Location = new System.Drawing.Point(80, 103);
+            this.comboBoxProductType.Name = "comboBoxProductType";
+            this.comboBoxProductType.Size = new System.Drawing.Size(220, 20);
+            this.comboBoxProductType.TabIndex = 25;
+            this.comboBoxProductType.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comboBoxProductType_MouseClick);
             // 
             // AddThingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
-            this.ClientSize = new System.Drawing.Size(334, 511);
-            this.Controls.Add(this.textBoxPeopleResp);
+            this.ClientSize = new System.Drawing.Size(334, 503);
+            this.Controls.Add(this.comboBoxProductType);
+            this.Controls.Add(this.comboBoxPerson);
             this.Controls.Add(this.buttonCancelAdd);
             this.Controls.Add(this.buttonAddThing);
             this.Controls.Add(this.pictureBoxThing);
-            this.Controls.Add(this.textBoxThingType);
             this.Controls.Add(this.buttonOfAddThingsPhoto);
             this.Controls.Add(this.dateExpire);
             this.Controls.Add(this.dateManufactured);
@@ -251,10 +253,10 @@ namespace Treasurer_App
         private System.Windows.Forms.DateTimePicker dateManufactured;
         private System.Windows.Forms.DateTimePicker dateExpire;
         private System.Windows.Forms.Button buttonOfAddThingsPhoto;
-        private System.Windows.Forms.TextBox textBoxThingType;
         private System.Windows.Forms.PictureBox pictureBoxThing;
         private System.Windows.Forms.Button buttonAddThing;
         private System.Windows.Forms.Button buttonCancelAdd;
-        private System.Windows.Forms.TextBox textBoxPeopleResp;
+        private System.Windows.Forms.ComboBox comboBoxPerson;
+        private System.Windows.Forms.ComboBox comboBoxProductType;
     }
 }

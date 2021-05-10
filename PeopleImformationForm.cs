@@ -41,9 +41,13 @@ namespace Treasurer_App
 
             dataGridView1.AllowUserToAddRows = false;
 
-
+            
             labelSearchResult.Text = "Нийт илэрц: " + dataGridView1.Rows.Count;
-
+            if (dataGridView1 != null)
+            {
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dataGridView1.Columns[dataGridView1.ColumnCount - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
 
 
         }
@@ -181,8 +185,9 @@ namespace Treasurer_App
             dataGridView1.RowHeadersVisible = false;
 
             dataGridView1.DataSource = usersoftreasurer.getPerson(command);
-
+            
             imgCol = (DataGridViewImageColumn)dataGridView1.Columns[6];
+
 
             imgCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
 

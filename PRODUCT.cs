@@ -18,7 +18,7 @@ namespace Treasurer_App
         //product iig database-d query command iig ashiglan nemeh function
         public bool insertProduct(string pName, string pType, DateTime mDate, DateTime eDate, string owner, MemoryStream image)
         {
-            MySqlCommand command = new MySqlCommand(" INSERT INTO `usersdb`.`product`(`pname`,`ptype`,`date_manufactured`,`date_expire`,`person_responsible_for`,`image`) VALUES(@pn,@pt,@dm,@de,@prf,@img);", db.getConnection());
+            MySqlCommand command = new MySqlCommand("CALL `usersdb`.`insert_product`(@pn, @pt, @dm, @de, @prf, @img);", db.getConnection());
 
             //@pn, @pt, @dm, @de, @prf, @img
             command.Parameters.Add("@pn", MySqlDbType.VarChar).Value = pName;
@@ -63,9 +63,9 @@ namespace Treasurer_App
         {
             try
             {
-                MySqlCommand command = new MySqlCommand("UPDATE `usersdb`.`product` SET `pname` = @pn,`ptype` = @pt,`date_manufactured` = @dm, `date_expire` = @de,`person_responsible_for` = @prf,`image` = @img WHERE `product`.`product_id` = @ID; ", db.getConnection());
+                MySqlCommand command = new MySqlCommand("CALL `usersdb`.`update_product`(@ID,@pn, @pt, @dm, @de, @prf, @img);", db.getConnection());
 
-                //@pn, @pt, @dm, @de, @prf, @img,@ID
+                //@ID,@pn, @pt, @dm, @de, @prf, @img
                 command.Parameters.Add("@ID", MySqlDbType.Int32).Value = id;
                 command.Parameters.Add("@pn", MySqlDbType.VarChar).Value = pName;
                 command.Parameters.Add("@pt", MySqlDbType.VarChar).Value = pType;
@@ -97,7 +97,7 @@ namespace Treasurer_App
 
         public bool deleteProduct(int id)
         {
-            MySqlCommand command = new MySqlCommand("DELETE FROM `usersdb`.`product` WHERE (`product_id` = @ID);", db.getConnection());
+            MySqlCommand command = new MySqlCommand("CALL `usersdb`.`delete_product`(@ID);;", db.getConnection());
 
             command.Parameters.Add("@ID", MySqlDbType.Int32).Value = id;
 

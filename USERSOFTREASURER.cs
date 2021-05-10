@@ -97,5 +97,16 @@ namespace Treasurer_App
             }
         }
 
+
+        /*
+        public bool getFirstname(MySqlCommand command)
+        {
+            MySqlCommand command1 = new MySqlCommand("SELECT `firstname` FROM `usersdb`.`users_of_treasurer`;", db.getConnection());
+
+
+            return true;
+
+        }
+        */
     }
 }

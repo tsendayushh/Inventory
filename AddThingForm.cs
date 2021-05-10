@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+
 
 namespace Treasurer_App
 {
@@ -39,8 +41,10 @@ namespace Treasurer_App
         bool verif()
         {
             if( (textBoxProductName.Text.Trim() == "") ||
-                (textBoxThingType.Text.Trim() == "") ||
-                (textBoxPeopleResp.Text.Trim() == "") ||
+                //(textBoxThingType.Text.Trim() == "") ||
+                (comboBoxProductType.SelectedItem.ToString() == "") ||
+                //(textBoxPeopleResp.Text.Trim() == "") ||
+                (comboBoxPerson.SelectedItem.ToString() == "") ||
                 (pictureBoxThing.Image == null))
             {
                 return false;
@@ -56,10 +60,17 @@ namespace Treasurer_App
             PRODUCT product = new PRODUCT();
 
             string pName = textBoxProductName.Text;
-            string pType = textBoxThingType.Text;
+
+            //string pType = textBoxThingType.Text; //ene ni text box oos awdg bh ued
+            
+            string pType = comboBoxProductType.SelectedItem.ToString();
             DateTime mDate = dateManufactured.Value;
             DateTime eDate = dateExpire.Value;
-            string owner = textBoxPeopleResp.Text;
+
+
+            //string owner = textBoxPeopleResp.Text;//ene ni textbox oos awdag bsn ued
+                        
+            string owner = comboBoxPerson.Text;//ene ni combobox oos awah ued
 
             MemoryStream image = new MemoryStream();
             
@@ -83,6 +94,64 @@ namespace Treasurer_App
             {
                 MessageBox.Show("Мэдээлэл дутуу оруулсан байна.\nМэдээллээ шалгаад дахиг оруулна уу!", "Мэдээлэл дутуу байна", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            }
+
+        }
+
+        private void comboBoxPerson_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            try
+            {
+                comboBoxPerson.Items.Clear();
+                my_Database db = new my_Database();
+                db.openConnection();
+                USERSOFTREASURER usersoftreasurer = new USERSOFTREASURER();
+
+                string query = "SELECT * FROM `usersdb`.`users_of_treasurer`;";
+
+                MySqlCommand command = new MySqlCommand(query, db.getConnection());
+                //DataTable table = usersoftreasurer.getPerson(command);
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    //comboBoxPerson.Items.Add(table.Columns.)
+                    comboBoxPerson.Items.Add(reader.GetString("username"));
+                }
+
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            
+
+        }
+
+        private void comboBoxProductType_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                comboBoxProductType.Items.Clear();
+                my_Database db = new my_Database();
+                db.openConnection();
+
+                string query = "SELECT * FROM `usersdb`.`type_of_product`;";
+
+                MySqlCommand command = new MySqlCommand(query, db.getConnection());
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    comboBoxProductType.Items.Add(reader.GetString("product_type"));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
 
         }
